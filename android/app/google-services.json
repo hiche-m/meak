@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "523319679967",
+    "project_id": "meak-7a7fb",
+    "storage_bucket": "meak-7a7fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523319679967:android:eb63accc37b0a9101e426a",
+        "android_client_info": {
+          "package_name": "com.essentialzed.meak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523319679967-bgnci5ikpo2ue307bh7db5cqgn9ominv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.essentialzed.meak",
+            "certificate_hash": "3903faadf5c0cb488409de3bb4827a2dd25e7321"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcTV4myElAqcIwxP9RmVOChQNgNSqRQq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523319679967-qahdk64tio5ccpnq0731d3hb8efa1dh9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "523319679967-qk8radb3b2255gl0f17dj88nh7f6a1p2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.meak"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
