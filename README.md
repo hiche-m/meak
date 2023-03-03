@@ -7,7 +7,15 @@ A synchronised shopping list app.
   <div class="image-container">
     <img src="assets\Screenshots\AddByEmail.jpg" alt="Image 1">
     <img src="assets\Screenshots\AddByQR2.jpg" alt="Image 2">
-    <img src="assets\Screenshots\Home1.jpg" alt="Image 3">
+    <img src="assets\Screenshots\AddItem1.jpg" alt="Image 3">
+  </div>
+  <div class="image-container">
+    <img src="assets\Screenshots\EditProfile.jpg" alt="Image 4">
+    <img src="assets\Screenshots\Home1.jpg" alt="Image 5">
+    <img src="assets\Screenshots\PersonalSettings.jpg" alt="Image 6">
+  </div>
+  <div class="image-container">
+    <img src="assets\Screenshots\Settings.jpg" alt="Image 7">
   </div>
   <button class="next">&#10095;</button>
 </div>
@@ -42,18 +50,3 @@ max-width:100%;
 max-height:500px;
 }
 </style>
-
-<script>
-const container = document.querySelector('.container');
-const prevBtn = container.querySelector('.prev');
-const nextBtn = container.querySelector('.next');
-const imageContainer = container.querySelector('.image-container');
-
-prevBtn.addEventListener('click', () => {
-imageContainer.scrollLeft -= imageContainer.clientWidth;
-});
-
-nextBtn.addEventListener('click', () => {
-imageContainer.scrollLeft += imageContainer.clientWidth;
-});
-</script>
