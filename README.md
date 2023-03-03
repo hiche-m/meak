@@ -12,13 +12,12 @@ img {
 </head>
 <body>
 
-<img src="image1.jpg" alt="Image 1">
-<img src="image2.jpg" alt="Image 2">
-<img src="image3.jpg" alt="Image 3">
-<img src="image4.jpg" alt="Image 4">
-<img src="image5.jpg" alt="Image 5">
-<img src="image6.jpg" alt="Image 6">
-<img src="image7.jpg" alt="Image 7">
-
+<img src="assets\Screenshots\AddByEmail.jpg" alt="Image 1">
+<img src="assets\Screenshots\AddByQR2.jpg" alt="Image 2">
+<img src="assets\Screenshots\AddItem1.jpg" alt="Image 3">
+<img src="assets\Screenshots\EditProfile.jpg" alt="Image 4">
+<img src="assets\Screenshots\Home1.jpg" alt="Image 5">
+<img src="assets\Screenshots\PersonalSettings.jpg" alt="Image 6">
+<img src="assets\Screenshots\Settings.jpg" alt="Image 7">
 </body>
 </html>
