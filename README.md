@@ -9,6 +9,5 @@ A synchronised shopping list app.
     <img src="assets\Screenshots\AddItem1.jpg" alt="Image 3">
     <img src="assets\Screenshots\EditProfile.jpg" alt="Image 4">
     <img src="assets\Screenshots\Home1.jpg" alt="Image 5">
-    <img src="assets\Screenshots\PersonalSettings.jpg" alt="Image 6">
-    <img src="assets\Screenshots\Settings.jpg" alt="Image 7">
+    <img src="assets\Screenshots\Settings.jpg" alt="Image 6">
 </div>
