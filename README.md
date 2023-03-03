@@ -2,6 +2,9 @@
 
 A synchronised shopping list app.
 
+
+## Some screenshots:
+
 <link rel="stylesheet" href="styles.css">
 <div class="container">
     <img src="assets\Screenshots\AddByEmail.jpg" alt="Image 1">
