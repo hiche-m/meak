@@ -23,4 +23,20 @@ class Profile {
     this.firstNameFirst = true,
     this.isOwner = false,
   });
+
+  toMap() {
+    return {
+      "partyId": partyId,
+      "uid": uid,
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "provider": provider,
+      "middleName": middleName,
+      "pic": pic,
+      "showMiddleName": showMiddleName,
+      "firstNameFirst": firstNameFirst,
+      "isOwner": isOwner,
+    };
+  }
 }

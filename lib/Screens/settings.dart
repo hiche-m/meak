@@ -1248,6 +1248,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 progress = snapshot.bytesTransferred /
                                     snapshot.totalBytes;
                               });
+                            }).onDone(() async {
+                              Map<String, dynamic> accountData =
+                                  widget.account.toMap();
+                              accountData["imgURL"] = await Storage()
+                                  .getPicUrl(widget.account.uid, data);
+                              Firestore().updateAccountData(
+                                  uid: widget.account.uid,
+                                  accountData: accountData,
+                                  newUser: false);
                             });
 
                             /// final snapshot = uploading!.asStream()
@@ -1264,6 +1273,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         if (file != null) {
                           uploading = await Storage()
                               .uploadPictureWithFile(widget.account.uid, file);
+
+                          uploading!.asStream().listen((snapshot) {
+                            setState(() {
+                              progress = snapshot.bytesTransferred /
+                                  snapshot.totalBytes;
+                            });
+                          }).onDone(() async {
+                            Map<String, dynamic> accountData =
+                                widget.account.toMap();
+                            accountData["imgURL"] = await Storage()
+                                .getPicUrl(widget.account.uid, file);
+                            Firestore().updateAccountData(
+                                uid: widget.account.uid,
+                                accountData: accountData,
+                                newUser: false);
+                          });
                         }
                       }
                     },

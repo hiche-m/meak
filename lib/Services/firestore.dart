@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Firestore {
   final CollectionReference _accounts =
       FirebaseFirestore.instance.collection("accounts");
+
   Future<String?> updateAccountData({
     required String uid,
     required Map<String, dynamic> accountData,
@@ -19,6 +20,7 @@ class Firestore {
       "showMiddleName": true,
       "firstNameFirst": true,
     };
+
     accountData.forEach((key, value) {
       value != null ? [options[key] = value, proceed = true] : null;
     });

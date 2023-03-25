@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
@@ -53,5 +54,15 @@ class Storage {
     } else {
       return null;
     }
+  }
+
+  Future<String?> getPicUrl(String uid, dynamic data) async {
+    final String path = kIsWeb
+        ? "profiles/$uid/picture.${data[1]}"
+        : "profiles/$uid/picture.${extension(data.path)}";
+    String url =
+        await FirebaseStorage.instance.ref().child(path).getDownloadURL();
+
+    return url;
   }
 }
