@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="facebook_app_id">1567459190367812</string>
-    <string name="facebook_client_token">1c267bf4de17a4163199c408680a880a</string>
+    <string name="facebook_app_id">${{ secrets.FACEBOOK_APP_ID }}</string>
+    <string name="facebook_client_token">${{ secrets.FACEBOOK_CLIENT_TOKEN }}</string>
 </resources>
