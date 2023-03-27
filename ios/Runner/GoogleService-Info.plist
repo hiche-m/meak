@@ -33,4 +33,39 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:523319679967:ios:000fad9c8fe8f2441e426a</string>
 </dict>
+</plist><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>523319679967-qk8radb3b2255gl0f17dj88nh7f6a1p2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.523319679967-qk8radb3b2255gl0f17dj88nh7f6a1p2</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>523319679967-bgnci5ikpo2ue307bh7db5cqgn9ominv.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>${{ secrets.GOOGLE_API_KEY }}</string>
+	<key>GCM_SENDER_ID</key>
+	<string>523319679967</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.meak</string>
+	<key>PROJECT_ID</key>
+	<string>meak-7a7fb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>meak-7a7fb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>${{ secrets.GOOGLE_APP_ID_IOS }}</string>
+</dict>
 </plist>
