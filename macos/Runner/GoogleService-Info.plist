@@ -44,7 +44,7 @@
 	<key>ANDROID_CLIENT_ID</key>
 	<string>523319679967-bgnci5ikpo2ue307bh7db5cqgn9ominv.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>${{ secrets.GOOGLE_API_KEY }}</string>
+	<string>1:523319679967:ios:000fad9c8fe8f2441e426a</string>
 	<key>GCM_SENDER_ID</key>
 	<string>523319679967</string>
 	<key>PLIST_VERSION</key>
@@ -66,6 +66,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>${{ secrets.GOOGLE_APP_ID_IOS }}</string>
+	<string>1:523319679967:ios:000fad9c8fe8f2441e426a</string>
 </dict>
 </plist>
