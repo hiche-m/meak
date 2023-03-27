@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meak/Classes/profile.dart';
-import 'package:meak/Screens/home.dart';
-import 'package:meak/Services/auth.dart';
+import 'package:meak/Models/profile.dart';
+import 'package:meak/View/home.dart';
+import 'package:meak/Utils/Services/auth.dart';
 import 'package:provider/provider.dart';
 
 class Loading extends StatefulWidget {

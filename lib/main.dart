@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:meak/Classes/member.dart';
-import 'package:meak/Classes/profile.dart';
-import 'package:meak/Screens/home.dart';
-import 'package:meak/Screens/loading.dart';
-import 'package:meak/Screens/settings.dart';
-import 'package:meak/lang/lang_string.dart';
-import 'package:meak/themes.dart';
+import 'package:meak/Models/member.dart';
+import 'package:meak/Models/profile.dart';
+import 'package:meak/View/home.dart';
+import 'package:meak/View/loading.dart';
+import 'package:meak/View/settings.dart';
+import 'package:meak/Utils/lang/lang_string.dart';
+import 'package:meak/Utils/themes.dart';
 import 'firebase_options.dart';
 
 //EN: English

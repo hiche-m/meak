@@ -1,15 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meak/Classes/profile.dart';
-import 'package:meak/Services/auth.dart';
-import 'package:meak/Services/firestore.dart';
-import 'package:meak/TextFormulations.dart';
+import 'package:meak/Models/profile.dart';
+import 'package:meak/Utils/Services/auth.dart';
+import 'package:meak/Utils/Services/firestore.dart';
+import 'package:meak/Utils/TextFormulations.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:meak/main.dart';
-import 'package:meak/themes.dart';
+import 'package:meak/Utils/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:meak/Screens/settings.dart' as settings;
+import 'package:meak/View/settings.dart' as settings;
 
 class Security extends StatefulWidget {
   Security({Key? key, required this.account, required this.uid})

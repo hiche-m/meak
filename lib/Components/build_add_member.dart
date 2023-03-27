@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:meak/themes.dart';
+import 'package:meak/Utils/themes.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class AddMemberMenu {

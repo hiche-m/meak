@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meak/Classes/member.dart';
-import 'package:meak/Classes/message.dart';
-import 'package:meak/Classes/chat_data.dart';
-import 'package:meak/Classes/profile.dart';
-import 'package:meak/lang/dates.dart';
+import 'package:meak/Models/member.dart';
+import 'package:meak/Models/message.dart';
+import 'package:meak/Models/chat_data.dart';
+import 'package:meak/Models/profile.dart';
+import 'package:meak/Utils/lang/dates.dart';
+import 'package:meak/View/settings.dart';
 import 'package:meak/main.dart';
-import 'package:meak/themes.dart';
+import 'package:meak/Utils/themes.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../Components/message_item.dart';
+import '../ViewModels/chat_viewmodel.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -94,8 +98,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       ? AnimatedList(
                           itemBuilder: ((context, index, animation) {
                             return index < data.length + 1 && index != 0
-                                ? messageItem(data[index - 1], myAccount.uid,
-                                    height, width)
+                                ? MessageItem(
+                                    msg: data[index - 1],
+                                    uid: myAccount.uid,
+                                    height: height,
+                                    width: width,
+                                    data: data,
+                                    membersList: membersList)
                                 : SizedBox(
                                     height: (height / 7),
                                   );
@@ -287,7 +296,17 @@ class _ChatScreenState extends State<ChatScreen> {
                                       textInputAction: TextInputAction.send,
                                       onFieldSubmitted: (value) {
                                         if (_sendKet.currentState!.validate()) {
-                                          sendMessage(height);
+                                          ChatModel().sendMessage(
+                                            height: height,
+                                            data: data,
+                                            myAccount: myAccount,
+                                            messageController:
+                                                messageController,
+                                            focusNode: focusNode,
+                                            listKey: listKey,
+                                            listController: listController,
+                                          );
+                                          setState(() {});
                                         }
                                       },
                                       textAlign: TextAlign.justify,
@@ -328,7 +347,18 @@ class _ChatScreenState extends State<ChatScreen> {
                                             onPressed: () {
                                               if (_sendKet.currentState!
                                                   .validate()) {
-                                                sendMessage(height);
+                                                ChatModel().sendMessage(
+                                                  height: height,
+                                                  data: data,
+                                                  myAccount: myAccount,
+                                                  messageController:
+                                                      messageController,
+                                                  focusNode: focusNode,
+                                                  listKey: listKey,
+                                                  listController:
+                                                      listController,
+                                                );
+                                                setState(() {});
                                               }
                                             },
                                             icon: const FractionallySizedBox(
@@ -360,160 +390,16 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  cleanArea() {
-    Future.delayed(const Duration(milliseconds: 5), () {
-      setState(() {
-        messageController.clear();
-      });
-    });
-  }
-
-  void sendMessage(double height) {
-    setState(() {
-      if (data.isNotEmpty) {
-        data.add(Message(
-            id: data.last.id + 1,
-            senderId: myAccount.uid,
-            partyId: myAccount.partyId!,
-            time:
-                "${DateTime.now().year}${DateTime.now().month.toString().padLeft(2, '0')}${DateTime.now().day.toString().padLeft(2, '0')}T${DateTime.now().hour.toString().padLeft(2, '0')}${DateTime.now().minute.toString().padLeft(2, '0')}${DateTime.now().second.toString().padLeft(2, '0')}",
-            content: messageController.text,
-            previousId: data.last.id));
-        listKey.currentState!.insertItem(data.length);
-        listController.animateTo(
-            listController.position.maxScrollExtent + height / 8,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.fastOutSlowIn);
-      } else {
-        data.add(Message(
-          id: 0,
-          senderId: myAccount.uid,
-          partyId: myAccount.partyId!,
-          time:
-              "${DateTime.now().year}${DateTime.now().month.toString().padLeft(2, '0')}${DateTime.now().day.toString().padLeft(2, '0')}T${DateTime.now().hour.toString().padLeft(2, '0')}${DateTime.now().minute.toString().padLeft(2, '0')}${DateTime.now().second.toString().padLeft(2, '0')}",
-          content: messageController.text,
-        ));
-      }
-    });
-    focusNode.requestFocus();
-    cleanArea();
-  }
-
   void handleClick(String value) {
     if (value == 'clear_chat'.tr) {
       setState(() {
         data.clear();
       });
     } else {
-      Navigator.of(context).pushNamed("/settings");
+      Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (context) => SettingsScreen(account: myAccount)),
+      );
     }
-  }
-
-  //Message Item
-  Widget messageItem(Message msg, String uid, double height, double width) {
-    bool myself = uid == msg.senderId;
-    DateTime time = DateTime.parse(msg.time);
-    bool showDate = false;
-    if (msg.previousId != null) {
-      Message previousMessage =
-          data.where((element) => element.id == msg.previousId).first;
-      DateTime previousMessageDate = DateTime.parse(previousMessage.time);
-      String today = msg.time.substring(0, 8);
-      DateTime todayDate = DateTime.parse("${int.parse(today)}T000000");
-      todayDate.isAfter(previousMessageDate) ? showDate = true : null;
-    } else {
-      showDate = true;
-    }
-    Member sender =
-        membersList.where((element) => element.uid == msg.senderId).first;
-    return Column(
-      children: [
-        //Full Date
-        showDate
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 8.0, top: 20.0),
-                child: Text(
-                  " ${weekList[selectedLang]![time.weekday]} ${DateFormat('dd').format(time)} ${monthList[selectedLang]![time.month]} ${DateFormat('yyyy').format(time)}",
-                  style: TextStyle(
-                    color: swatchList[selectedTheme][4],
-                    fontSize: 2.0 * (height * 0.01),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              )
-            : const SizedBox(),
-        //Message
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment:
-                myself ? MainAxisAlignment.end : MainAxisAlignment.start,
-            children: [
-              //Time Left
-              myself
-                  ? Text(
-                      "${DateFormat('HH:mm').format(time)} ",
-                      style: TextStyle(
-                        fontSize: 2.0 * (height * 0.01),
-                        color: swatchList[selectedTheme][4],
-                      ),
-                    )
-                  : const SizedBox(),
-              //Info
-              !myself
-                  ? Tooltip(
-                      message: sender.name,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        //Picture
-                        child: CircleAvatar(
-                          backgroundColor: swatchList[selectedTheme][5],
-                          backgroundImage: sender.pic != null
-                              ? NetworkImage(sender.pic!)
-                              : const AssetImage("assets/default.png")
-                                  as ImageProvider,
-                          radius: 4.0 * (height * 0.01),
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-              Flexible(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: myself
-                        ? swatchList[selectedTheme][1]
-                        : swatchList[selectedTheme][3],
-                    border: Border.all(color: Colors.transparent),
-                    borderRadius: BorderRadius.all(
-                        Radius.circular(4.0 * (height * 0.01))),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(2.0 * (height * 0.01)),
-                    child: Text(
-                      msg.content,
-                      softWrap: true,
-                      style: TextStyle(
-                        fontSize: 2.5 * (height * 0.01),
-                        color: swatchList[selectedTheme][6],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              //Time right
-              !myself
-                  ? Text(
-                      " ${DateFormat('HH:mm').format(time)}",
-                      style: TextStyle(
-                        fontSize: 2.0 * (height * 0.01),
-                        color: swatchList[selectedTheme][4],
-                      ),
-                    )
-                  : const SizedBox(),
-            ],
-          ),
-        ),
-      ],
-    );
   }
 }

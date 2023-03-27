@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:meak/Screens/loading.dart';
+import 'package:meak/View/loading.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

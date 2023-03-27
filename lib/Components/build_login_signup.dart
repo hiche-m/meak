@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:meak/Services/auth.dart';
-import 'package:meak/TextFormulations.dart';
-import 'package:meak/themes.dart';
+import 'package:meak/Utils/Services/auth.dart';
+import 'package:meak/Utils/TextFormulations.dart';
+import 'package:meak/Utils/themes.dart';
 
 class LogInSignUpMenu {
   TextEditingController lastNameController = TextEditingController();

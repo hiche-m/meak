@@ -7,9 +7,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-import 'package:meak/Services/firestore.dart';
-import 'package:meak/Services/storage.dart';
-import 'package:meak/TextFormulations.dart';
+import 'package:meak/Utils/Services/firestore.dart';
+import 'package:meak/Utils/Services/storage.dart';
+import 'package:meak/Utils/TextFormulations.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Auth {
